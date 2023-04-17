@@ -38,6 +38,7 @@ The steps to setup project locally and run
             <li>php artisan migrate</li>
             <li>php artisan storage:link</li>
             <li>php artisan db:seed --class=UserSeeder</li>
+            <li>php artisan key:generate</li>            
         </ul>
     </li>
     <li>Finally run command: php artisan ser</li>
