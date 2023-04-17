@@ -135,30 +135,35 @@
           },
           success: function(data) {
             //if return successfully
+            // console.log(data);
             // console.log(data['response']);
-            let question = '<li class="message question">'+
-                              '<div class="message-content bg-secondary p-1 rounded text-white">'+
-                                  '<p class="message-text mb-0">'+message+'</p>'+
-                                  '<small class="message-time">'+"{{ date('d M, Y | h:i a') }}"+'</small>'+
-                              '</div>'+
-                              '<div class="avatar-wrapper rounded-circle ms-1">'+
-                                '<i class="bi bi-person"></i>'+
-                              '</div>'+
+            if (data['status'] == 404) {
+                $('.err-msg').text(data['msg']);
+            } else {
+              let question = '<li class="message question">'+
+                                '<div class="message-content bg-secondary p-1 rounded text-white">'+
+                                    '<p class="message-text mb-0">'+message+'</p>'+
+                                    '<small class="message-time">'+"{{ date('d M, Y | h:i a') }}"+'</small>'+
+                                '</div>'+
+                                '<div class="avatar-wrapper rounded-circle ms-1">'+
+                                  '<i class="bi bi-person"></i>'+
+                                '</div>'+
+                            '</li>';
+              let reply = '<li class="message reply">'+
+                            '<div class="avatar-wrapper rounded-circle me-1">'+
+                              '<i class="bi bi-person"></i>'+
+                            '</div>'+
+                            '<div class="message-content bg-info p-1 rounded text-white">'+
+                              '<p class="message-text mb-0">'+data['response']+'</p>'+
+                              '<small class="message-time">'+"{{ date('d M, Y | h:i a') }}"+'</small>'+
+                            '</div>'+
                           '</li>';
-            let reply = '<li class="message reply">'+
-                          '<div class="avatar-wrapper rounded-circle me-1">'+
-                            '<i class="bi bi-person"></i>'+
-                          '</div>'+
-                          '<div class="message-content bg-info p-1 rounded text-white">'+
-                            '<p class="message-text mb-0">'+data['response']+'</p>'+
-                            '<small class="message-time">'+"{{ date('d M, Y | h:i a') }}"+'</small>'+
-                          '</div>'+
-                        '</li>';
-            let final_que_rep = question + reply;
-            
-            $(".conversation").append(final_que_rep);
-            $('.text-msg').val('');
-            $("#messenger-body").animate({ scrollTop: $('#messenger-body').prop("scrollHeight")}, 1000);
+              let final_que_rep = question + reply;
+              
+              $(".conversation").append(final_que_rep);
+              $('.text-msg').val('');
+              $("#messenger-body").animate({ scrollTop: $('#messenger-body').prop("scrollHeight")}, 1000);
+            }
           },
           error: function (err) {
             //if return error

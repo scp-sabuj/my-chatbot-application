@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Message;
+use App\Models\Training;
 use Auth;
 
 class PublicController extends Controller
@@ -22,7 +23,11 @@ class PublicController extends Controller
         $request->validate([
             'message' => 'required|string|max:255',
         ]);
-        return $this->handleChat($query);
+        $training_datas = Training::where('status', 1)->get();
+        if (count($training_datas) > 0) {
+            return $this->handleChat($query);
+        }
+        return response()->json(['status' => 404, 'msg' => 'No Training Data Found']);
     }
 
     // Handle user queries
