@@ -22,6 +22,7 @@ This is a customer support chatbot system using Laravel and MySQL with Naive Bay
 
 ## How to setup and run
 The steps to setup project locally and run
+<b style="color:red">Befor setup project you have to setup laravel first in your local host.</b>
 
 <ul>
     <li>Clone or download the project</li>
