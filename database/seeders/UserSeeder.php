@@ -33,5 +33,9 @@ class UserSeeder extends Seeder
             'email' => 'sabujscp.311996@gmail.com',
             'password' => bcrypt('password'),
         ]);
+
+        DB::table('settings')->insert([
+            'used_algorithm' => 1,
+        ]);
     }
 }

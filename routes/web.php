@@ -14,6 +14,23 @@ use App\Http\Controllers\PublicController;
 |
 */
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    return 'DONE'; //Return anything
+});
+
+Route::get('/migrate-link', function () {
+    // Artisan::call('migrate:fresh');
+    return "Success";
+});
+
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    return "Success";
+});
+
+
 Route::get('/', [PublicController::class, 'welcome'])->name('welcome');
 Route::post('send-message', [PublicController::class, 'send_message'])->name('send.message');
 
