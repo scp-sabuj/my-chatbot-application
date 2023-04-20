@@ -135,7 +135,7 @@
           },
           success: function(data) {
             //if return successfully
-            // console.log(data);
+            console.log(data);
             // console.log(data['response']);
             if (data['status'] == 404) {
                 $('.err-msg').text(data['msg']);
