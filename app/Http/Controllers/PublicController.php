@@ -42,7 +42,7 @@ class PublicController extends Controller
     {
         // Get user query
         $query = $query;
-        return $query;
+        // return $query;
 
         // Load trained model from file
         $filename = 'svm_model.dat';
@@ -51,7 +51,7 @@ class PublicController extends Controller
 
         // Predict response using trained model
         $response = $model->predict([$query]);
-        return $query;
+        
 
         // Convert predicted response to string
         $predictedResponse = $response[0];
@@ -71,16 +71,18 @@ class PublicController extends Controller
     // Handle user queries with Naive Bayes
     public function handleChatWithNaiveBayes($query)
     {
-        return 'Naiv';
         // Get user query
         $query = $query;
+        
 
         // Load trained model from file
         $filename = 'naive_bayes_model.dat';
         $model = unserialize(file_get_contents($filename));
+        
 
         // Predict response using trained model
         $response = $model->predict([$query]);
+        
 
         // Convert predicted response to string
         $predictedResponse = $response[0];
